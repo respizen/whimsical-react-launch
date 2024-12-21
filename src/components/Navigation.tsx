@@ -1,64 +1,19 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "glass-effect py-4" : "py-6"
-      }`}
-    >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between">
-          <a href="/" className="text-2xl font-semibold hover-lift">
-            Brand
-          </a>
-          
+    <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <span className="text-xl font-bold text-blue-600">Logo</span>
+          </div>
           <div className="hidden md:flex items-center space-x-8">
-            {["Features", "About", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="hover-lift text-sm font-medium"
-              >
-                {item}
-              </a>
-            ))}
+            <a href="#features" className="text-gray-600 hover:text-gray-900">Features</a>
+            <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
+            <Button className="gradient-bg">Get Started</Button>
           </div>
-
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4">
-            {["Features", "About", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block py-2 text-sm font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-        )}
       </div>
     </nav>
   );
