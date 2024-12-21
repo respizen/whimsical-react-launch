@@ -24,15 +24,19 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'framer-motion'],
+          vendor: ['react', 'react-dom'],
+          motion: ['framer-motion'],
           ui: ['@radix-ui/react-navigation-menu', '@radix-ui/react-dialog']
         }
       }
     },
     chunkSizeWarningLimit: 1000,
     base: 'https://fioriforyou.com/',
+    reportCompressedSize: false,
+    cssCodeSplit: true,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion']
+    include: ['react', 'react-dom', 'framer-motion'],
+    exclude: ['@radix-ui/react-navigation-menu', '@radix-ui/react-dialog']
   }
 }));

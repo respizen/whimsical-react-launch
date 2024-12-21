@@ -20,6 +20,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             src={product.image}
             alt={product.name}
             className="w-full h-full object-contain mix-blend-normal"
+            loading="lazy"
           />
         </div>
         <div className="p-2 md:p-4">
@@ -31,7 +32,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {product.color}
           </div>
           <div className="mt-2 font-bold text-black">
-            € {product.price}
+            {product.price} TND
           </div>
         </div>
       </div>
