@@ -61,6 +61,15 @@ const PaymentButtons = ({
   };
 
   const handleCashPayment = () => {
+    if (!enabled || !userDetails) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez remplir vos coordonnées d'abord",
+        variant: "destructive",
+      });
+      return;
+    }
+
     navigate('/order-preview', {
       state: {
         orderDetails: {

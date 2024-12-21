@@ -11,6 +11,7 @@ import CartPage from './pages/CartPage';
 import PaymentSuccessPage from './pages/PaymentSuccessPage';
 import PaymentFailurePage from './pages/PaymentFailurePage';
 import PromoCodesPage from './pages/PromoCodesPage';
+import OrderPreviewPage from './pages/OrderPreviewPage';
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/category/*" element={<CategoryPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/promo-codes" element={<PromoCodesPage />} />
+            <Route path="/order-preview" element={<OrderPreviewPage />} />
             <Route path="/payment-success" element={<PaymentSuccessPage />} />
             <Route path="/payment-failure" element={<PaymentFailurePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
